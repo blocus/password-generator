@@ -1,0 +1,27 @@
+#!/usr/bin/python
+import random, sys, string
+
+
+def getNumber():
+    nb = 32
+    if len(sys.argv) == 2:
+        try:
+            nb = int(sys.argv[1])
+        except:
+            print("Usage : passgen [integer]")
+            exit()
+    elif len(sys.argv) > 2:
+        print("Too many arguments")
+        print("Usage : passgen [integer]")
+        exit()
+    return nb
+
+def main():
+    nb = getNumber()
+    passgen(nb)
+
+def passgen(nb=32):
+    print("".join([random.choice(string.ascii_letters + string.digits) for i in range(nb)]))
+
+if __name__ == '__main__':
+    main()
